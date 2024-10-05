@@ -1,11 +1,12 @@
 from typing import Any, Dict, List, Optional
 
+from langchain_community.chat_models import ChatOpenAI
+
 from langchain import hub
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_community.tools.tavily_search import (
     TavilySearchResults,
 )
-from langchain_openai import ChatOpenAI
 from loguru import logger
 
 
