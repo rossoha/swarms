@@ -57,26 +57,28 @@ def create_agents_from_yaml(
     for agent_config in config["agents"]:
         logger.info(f"Creating agent: {agent_config['agent_name']}")
 
-        # Get the OpenAI API key from environment or YAML config
-        api_key = os.getenv("OPENAI_API_KEY") or agent_config[
-            "model"
-        ].get("openai_api_key")
-        if not api_key:
-            logger.error(
-                f"API key is missing for agent: {agent_config['agent_name']}"
-            )
-            raise ValueError(
-                f"API key is missing for agent: {agent_config['agent_name']}"
-            )
+        # # Get the OpenAI API key from environment or YAML config
+        # api_key = (
+        #     os.getenv("OPENAI_API_KEY")
+        # )
 
         # Create an instance of OpenAIChat model
+        # model = OpenAIChat(
+        #     openai_api_key=api_key,
+        #     model_name=agent_config["model"]["model_name"],
+        #     temperature=agent_config["model"]["temperature"],
+        #     max_tokens=agent_config["model"]["max_tokens"],
+        #     *args,
+        #     **kwargs,  # Pass any additional arguments to the model
+        # )
+        # Model
+        api_key = os.getenv("GROQ_API_KEY")
+
         model = OpenAIChat(
+            openai_api_base="https://api.groq.com/openai/v1",
             openai_api_key=api_key,
-            model_name=agent_config["model"]["model_name"],
-            temperature=agent_config["model"]["temperature"],
-            max_tokens=agent_config["model"]["max_tokens"],
-            *args,
-            **kwargs,  # Pass any additional arguments to the model
+            model_name="llama-3.1-70b-versatile",
+            temperature=0.1,
         )
 
         # Ensure the system prompt is provided
@@ -88,30 +90,10 @@ def create_agents_from_yaml(
                 f"System prompt is missing for agent: {agent_config['agent_name']}"
             )
 
-        # Dynamically choose the system prompt based on the agent config
-        try:
-            system_prompt = globals().get(
-                agent_config["system_prompt"]
-            )
-            if not system_prompt:
-                logger.error(
-                    f"System prompt {agent_config['system_prompt']} not found."
-                )
-                raise ValueError(
-                    f"System prompt {agent_config['system_prompt']} not found."
-                )
-        except KeyError:
-            logger.error(
-                f"System prompt {agent_config['system_prompt']} is not valid."
-            )
-            raise ValueError(
-                f"System prompt {agent_config['system_prompt']} is not valid."
-            )
-
         # Initialize the agent using the configuration
         agent = Agent(
             agent_name=agent_config["agent_name"],
-            system_prompt=system_prompt,
+            system_prompt=agent_config["system_prompt"],
             llm=model,
             max_loops=agent_config.get("max_loops", 1),
             autosave=agent_config.get("autosave", True),
@@ -177,20 +159,3 @@ def create_agents_from_yaml(
     else:
         logger.error(f"Invalid return_type: {return_type}")
         raise ValueError(f"Invalid return_type: {return_type}")
-
-
-# # Usage example
-# yaml_file = 'agents_config.yaml'
-
-# try:
-#     # Auto-create agents from the YAML file and return both agents and task results
-#     agents, task_results = create_agents_from_yaml(yaml_file, return_type="tasks")
-
-#     # Example: Print task results
-#     for result in task_results:
-#         print(f"Agent: {result['agent_name']} | Task: {result['task']} | Output: {result.get('output', 'Error encountered')}")
-
-# except FileNotFoundError as e:
-#     logger.error(f"Error: {e}")
-# except ValueError as e:
-#     logger.error(f"Error: {e}")

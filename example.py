@@ -1,6 +1,7 @@
 import os
 from swarms import Agent
 from swarm_models import OpenAIChat
+
 from swarms.prompts.finance_agent_sys_prompt import (
     FINANCIAL_AGENT_SYS_PROMPT,
 )
@@ -13,10 +14,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 # Create an instance of the OpenAIChat class
 model = OpenAIChat(
-    openai_api_key=api_key,
-    model_name="gpt-4o-mini",
-    temperature=0.1,
-    max_tokens=2000,
+    openai_api_key=api_key, model_name="gpt-4o-mini", temperature=0.1
 )
 
 # Initialize the agent
@@ -35,11 +33,11 @@ agent = Agent(
     context_length=200000,
     return_step_meta=False,
     # output_type="json",
-    output_type=str,
+    output_type="string",
+    streaming_on=False,
 )
 
 
-out = agent.run(
+agent.run(
     "How can I establish a ROTH IRA to buy stocks and get a tax break? What are the criteria"
 )
-print(out)

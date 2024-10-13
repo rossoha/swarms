@@ -133,19 +133,25 @@ nav:
   - Home:
     - Overview: "index.md"
     # - The Vision: "swarms/framework/vision.md"
-    - Install: "swarms/install/install.md"
-    - Quickstart: "swarms/install/quickstart.md"
-    - Swarms Framework Architecture: "swarms/concept/framework_architecture.md"
-    - Philosophy: "swarms/concept/philosophy.md"
     # - Docker Setup: "swarms/install/docker_setup.md"
-    # - Multi-Agent Repository Template: "swarms/install/multi_agent_template.md"
+    - Our Goal; The Ultimate Multi-Agent LLM Framework for Developers: "swarms/concept/vision.md"
+    - Swarm Ecosystem: "swarms/concept/swarm_ecosystem.md"
+    - Onboarding: 
+      - Installation: "swarms/install/install.md"
+      - Quickstart: "swarms/install/quickstart.md"
+      - Swarms CLI: "swarms/cli/main.md"
+      # - Swarms + Docker: 
+      - Swarms Framework Architecture: "swarms/concept/framework_architecture.md"
+    # - Prelimary:
+      # - 80/20 Rule For Agents: "swarms/prompting/8020.md"
+      - Managing Prompts in Production: "swarms/prompts/main.md"
     - Agents:
       # - Overview: "swarms/structs/index.md"
-      - Agent Architecture: "swarms/framework/agents_explained.md"
       # - Build Custom Agents: "swarms/structs/diy_your_own_agent.md"
+      - Agent Architecture: "swarms/framework/agents_explained.md"
       - Complete Agent API: "swarms/structs/agent.md"
+      - Create and Run Agents from YAML: "swarms/agents/create_agents_yaml.md"
       - Integrating External Agents from Griptape, Langchain, etc: "swarms/agents/external_party_agents.md"
-      - Create and or Run Agents from YAML: "swarms/agents/create_agents_yaml.md"
       - Tools:
         - Overview: "swarms/tools/main.md"
         - What are tools?: "swarms/tools/build_tool.md"
@@ -168,6 +174,7 @@ nav:
         - AgentRegistry: "swarms/structs/agent_registry.md"
         - SpreadSheetSwarm: "swarms/structs/spreadsheet_swarm.md"
         - ForestSwarm: "swarms/structs/forest_swarm.md"
+        - SwarmRouter: "swarms/structs/swarm_router.md"
         - Workflows:
             - ConcurrentWorkflow: "swarms/structs/concurrentworkflow.md"
             - SequentialWorkflow: "swarms/structs/sequential_workflow.md"
@@ -179,6 +186,10 @@ nav:
       - Contributing: "swarms/contributing.md"
       - Tests: "swarms/framework/test.md"
       - Code Cleanliness: "swarms/framework/code_cleanliness.md"
+      - Philosophy: "swarms/concept/philosophy.md"
+    - Changelog:
+      - Swarms 5.6.8: "swarms/changelog/5_6_8.md"
+      - Swarms 5.8.1: "swarms/changelog/5_8_1.md"
   - Swarm Models:
     - Overview: "swarms/models/index.md"
     - How to Create A Custom Language Model: "swarms/models/custom_model.md"
@@ -194,12 +205,15 @@ nav:
       - BaseMultiModalModel: "swarms/models/base_multimodal_model.md"
       - Multi Modal Models Available: "swarms/models/multimodal_models.md"
       - GPT4VisionAPI: "swarms/models/gpt4v.md"
-  # - Swarms Cloud API:
-  #   - Overview: "swarms_cloud/main.md"
-  #   - Available Models: "swarms_cloud/available_models.md"
-  #   - Agent API: "swarms_cloud/agent_api.md"
-  #   - Migrate from OpenAI to Swarms in 3 lines of code: "swarms_cloud/migrate_openai.md"
-  #   - Getting Started with SOTA Vision Language Models VLM: "swarms_cloud/getting_started.md"
+  - Swarms Cloud API:
+    # - Overview: "swarms_cloud/main.md"
+    - Overview: "swarms_cloud/vision.md"
+    - Swarms Cloud CLI: "swarms_cloud/cli.md"
+    - Add Agents to Marketplace: "swarms_cloud/add_agent.md"
+    # - Available Models: "swarms_cloud/available_models.md"
+    # - Agent API: "swarms_cloud/agent_api.md"
+    # - Migrate from OpenAI to Swarms in 3 lines of code: "swarms_cloud/migrate_openai.md"
+    # - Getting Started with SOTA Vision Language Models VLM: "swarms_cloud/getting_started.md"
   - Swarms Memory:
     - Overview: "swarms_memory/index.md"
     - Memory Systems:
@@ -223,10 +237,14 @@ nav:
     #   - Overview: "swarms_platform/tools_api.md"
     #   - Add Tools: "swarms_platform/fetch_tools.md"
   - Guides:
+    - Unlocking Efficiency and Cost Savings in Healthcare; How Swarms of LLM Agents Can Revolutionize Medical Operations and Save Millions: "guides/healthcare_blog.md"
     - Understanding Agent Evaluation Mechanisms: "guides/agent_evals.md"
     - Agent Glossary: "swarms/glossary.md"
+    - The Ultimate Technical Guide to the Swarms CLI; A Step-by-Step Developers Guide: "swarms/cli/cli_guide.md"
+  - Prompting Guide:
+    - The Essence of Enterprise-Grade Prompting: "swarms/prompts/essence.md"
+    - An Analysis on Prompting Strategies: "swarms/prompts/overview.md"
+    - Managing Prompts in Production: "swarms/prompts/main.md"
   - Corporate:
     - Hiring: "corporate/hiring.md"
-    
-
-  
+    - Swarms Goals & Milestone Tracking; A Vision for 2024 and Beyond: "corporate/2024_2025_goals.md"
